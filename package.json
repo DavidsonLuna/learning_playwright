@@ -1,0 +1,22 @@
+
+ {
+  "name": "learning_playwright",
+  "version": "1.0.0",
+  "description": "learning_playwright",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test"
+  },
+  "keywords": [
+    "functional",
+    "testing"
+  ],
+  "author": "Davidson Luna <davidsonluna@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "@playwright/test": "^1.21.0",
+    "lighthouse": "^9.5.0",
+    "playwright": "^1.21.0",
+    "playwright-lighthouse": "^2.2.1"
+  }
+}
