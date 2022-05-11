@@ -7,6 +7,7 @@ Inside that directory, you can run several commands:
     Runs the tests only on Desktop Chrome.
 
   npx playwright test src/tests/example.spec.ts
+  npx playwright test src/tests/search.spec.ts   
     Runs the tests of a specific file.
 
   npx playwright test --debug
