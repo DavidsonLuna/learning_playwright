@@ -1,30 +1,46 @@
-pipeline {
-  agent any 
+// pipeline {
+//   agent any 
 
-  stages {
-    stage('Install Playwright') {
-      steps {
-        echo 'Install Playwright'
-        sh '''
-        npm -i -D @playwright/test
-        npx playwright install
-        '''
+//   stages {
+//     stage('Install Playwright') {
+//       steps {
+//         echo 'Install Playwright'
+//         sh '''
+//         npm -i -D @playwright/test
+//         npx playwright install
+//         '''
+//         }
+//     }
+//     stage('Help Playwright') {
+//         steps {
+//             echo 'Help Playwright'
+//             sh 'npx playwright test -- help'
+//         }
+//     } 
+//     stage('Run Playwright Tests') {
+//       steps {
+//         echo 'Run Playwright Tests'
+//         sh '''
+//         npm playwright test --list
+//         npx playwright test 
+//         '''
+//       }
+//     }
+//   }
+// }
+
+pipeline {
+    agent any
+    stages {
+        stage('Many tests') {
+            agent {
+                docker {
+                    image 'mcr.microsoft.com/playwright:v1.17.1'
+                }
+            }
+            steps {
+                sh 'npx playwright test'
+            }
         }
     }
-    stage('Help Playwright') {
-        steps {
-            echo 'Help Playwright'
-            sh 'npx playwright test -- help'
-        }
-    } 
-    stage('Run Playwright Tests') {
-      steps {
-        echo 'Run Playwright Tests'
-        sh '''
-        npm playwright test --list
-        npx playwright test 
-        '''
-      }
-    }
-  }
 }
