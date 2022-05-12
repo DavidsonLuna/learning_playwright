@@ -1,0 +1,34 @@
+pipeline {
+  agent {
+    label "main"
+  docker {
+      image 'mcr.microsoft.com/playwright/playwright:latest'
+  }
+  }
+  stages {
+    stage('Install Playwright') {
+      steps {
+        echo 'Install Playwright'
+        sh '''
+        npm -i -D @playwright/test
+        npx playwright install
+        '''
+        }
+    }
+    stage('Help Playwright') {
+        steps {
+            echo 'Help Playwright'
+            sh 'npx playwright test -- help'
+        }
+    } 
+    stage('Run Playwright Tests') {
+      steps {
+        echo 'Run Playwright Tests'
+        sh '''
+        npm playwright test --list
+        npx playwright test 
+        '''
+      }
+    }
+  }
+}
